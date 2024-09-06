@@ -1,101 +1,254 @@
-import Image from "next/image";
+"use client";
+import Datacontext, { useDataContext } from '@/src/context/Datacontext'
+import React from 'react'
+import router, { useRouter } from 'next/navigation'
 
-export default function Home() {
+const page = () => {
+  const { setSteps, steps } = useDataContext()
+  const router = useRouter()
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      <h1 style={{
+        fontSize: "2rem",
+      }}>Insurance Application Form</h1>
+      <form>
+        <div className="row">
+          <div className="column">
+            <label htmlFor="city">City:</label>
+            <input type="text" id="city" name="city" required />
+          </div>
+          <div className="column">
+            <label htmlFor="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="householdIncome">Household Income:</label>
+            <input
+              type="number"
+              id="householdIncome"
+              name="householdIncome"
+              required
+            />
+          </div>
+          <div className="column">
+            <label htmlFor="householdSize">Household Size:</label>
+            <input
+              type="number"
+              id="householdSize"
+              name="householdSize"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="state">State:</label>
+            <input type="text" id="state" name="state" required />
+          </div>
+          <div className="column">
+            <label htmlFor="zip">ZIP Code:</label>
+            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" required />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="currentlyInsured">Currently Insured:</label>
+            <select id="currentlyInsured" name="currentlyInsured">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div className="column">
+            <label htmlFor="dui">DUI:</label>
+            <select id="dui" name="dui">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="education">Education:</label>
+            <select id="education" name="education">
+              <option value="highSchool">High School</option>
+              <option value="bachelor">Bachelor's Degree</option>
+              <option value="master">Master's Degree</option>
+              <option value="phd">PhD</option>
+            </select>
+          </div>
+          <div className="column">
+            <label htmlFor="gender">Gender:</label>
+            <select id="gender" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="heightFeet">Height (Feet):</label>
+            <input
+              type="number"
+              id="heightFeet"
+              name="heightFeet"
+              min="1"
+              max="8"
+              required
+            />
+          </div>
+          <div className="column">
+            <label htmlFor="heightInches">Height (Inches):</label>
+            <input
+              type="number"
+              id="heightInches"
+              name="heightInches"
+              min="0"
+              max="11"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="maritalStatus">Marital Status:</label>
+            <select id="maritalStatus" name="maritalStatus">
+              <option value="single">Single</option>
+              <option value="married">Married</option>
+              <option value="divorced">Divorced</option>
+              <option value="widowed">Widowed</option>
+            </select>
+          </div>
+          <div className="column">
+            <label htmlFor="occupation">Occupation:</label>
+            <input type="text" id="occupation" name="occupation" />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="previouslyDenied">Previously Denied Insurance:</label>
+            <select id="previouslyDenied" name="previouslyDenied">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div className="column">
+            <label htmlFor="relativeCancer">Relative with Cancer:</label>
+            <select id="relativeCancer" name="relativeCancer">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="relativeHeart">Relative with Heart Disease:</label>
+            <select id="relativeHeart" name="relativeHeart">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div className="column">
+            <label htmlFor="requestedCoverageType">Requested Coverage Type:</label>
+            <select id="requestedCoverageType" name="requestedCoverageType">
+              <option value="basic">Basic</option>
+              <option value="standard">Standard</option>
+              <option value="premium">Premium</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="residenceType">Residence Type:</label>
+            <select id="residenceType" name="residenceType">
+              <option value="house">House</option>
+              <option value="apartment">Apartment</option>
+              <option value="condo">Condo</option>
+            </select>
+          </div>
+          <div className="column">
+            <label htmlFor="tobaccoUse">Tobacco Use:</label>
+            <select id="tobaccoUse" name="tobaccoUse">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <label htmlFor="weight">Weight (lbs):</label>
+        <input type="number" id="weight" name="weight" required />
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="stayInYear">Stay in Year:</label>
+            <input
+              type="number"
+              id="stayInYear"
+              name="stayInYear"
+              min="1900"
+              max="2100"
+            />
+          </div>
+          <div className="column">
+            <label htmlFor="stayInMonth">Stay in Month:</label>
+            <input
+              type="number"
+              id="stayInMonth"
+              name="stayInMonth"
+              min="1"
+              max="12"
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column">
+            <label htmlFor="isStudent">Is Student:</label>
+            <select id="isStudent" name="isStudent">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div className="column">
+            <label htmlFor="medicalCondition">Medical Condition:</label>
+            <input type="text" id="medicalCondition" name="medicalCondition" />
+          </div>
+        </div>
+
+        <label htmlFor="expectantParent">Expectant Parent:</label>
+        <select id="expectantParent" name="expectantParent">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}>
+
+          <button type="button" onClick={() => {
+            // setSteps((prev) => prev > 1 ? prev - 1 : prev)
+          }}>Previous</button>
+          <button type="button" onClick={() => {
+            // setSteps((prev) => prev < 1 ? prev + 1 : prev)
+            router.push('/posting')
+
+          }}>Next</button>
+        </div>
+      </form>
+
     </div>
-  );
+  )
 }
+
+export default page
