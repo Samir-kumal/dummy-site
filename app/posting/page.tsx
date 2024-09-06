@@ -11,7 +11,7 @@ export default function ContactPage() {
             padding: '20px',
             backgroundColor: '#f4f4f4',
         }}>
-            <h1 style={{ textAlign: 'center', color: '#2c3e50' }}>Contact Information</h1>
+            <h1 style={{ textAlign: 'center', color: '#2c3e50', fontSize: "2rem" }}>Contact Information</h1>
             <form style={{
                 backgroundColor: '#fff',
                 padding: '20px',
