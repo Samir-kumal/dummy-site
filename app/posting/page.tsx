@@ -71,7 +71,7 @@ export default function ContactPage() {
                 <div style={{ marginBottom: '15px' }}>
                     <label style={{ fontWeight: 'normal', display: 'flex', alignItems: 'center' }}>
                         <input type="checkbox" id="consent" name="consent" required style={{ marginRight: '10px' }} />
-                        By clicking "I Agree," you are providing your ESIGN signature and
+                        By clicking &quot;I Agree,&quot; you are providing your ESIGN signature and
                         express written consent to be contacted by the Connected Solar,
                         including text (SMS/MMS) messaging or calls made using an automatic
                         telephone dialing system or prerecorded or artificial voice messages
@@ -80,7 +80,7 @@ export default function ContactPage() {
                 </div>
 
                 <h2 style={{ textAlign: 'center', color: '#2c3e50' }}>Potential Buyers</h2>
-                <p>Please select the buyers you're interested in:</p>
+                <p>Please select the buyers you&apos;re interested in:</p>
                 <div style={{ marginBottom: '15px' }}>
                     {['Acme Insurance Co.', 'Safe Haven Insurance', 'Reliable Coverage Inc.', 'Guardian Shield Insurance', 'Sunshine Insurance Group'].map((buyer, index) => (
                         <label key={index} style={{ fontWeight: 'normal', display: 'flex', alignItems: 'center', marginBottom: '5px' }}>

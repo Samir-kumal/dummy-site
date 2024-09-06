@@ -1,10 +1,8 @@
 "use client";
-import Datacontext, { useDataContext } from '@/src/context/Datacontext'
 import React from 'react'
-import router, { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-const page = () => {
-  const { setSteps, steps } = useDataContext()
+const Page = () => {
   const router = useRouter()
   return (
     <div>
@@ -77,8 +75,8 @@ const page = () => {
             <label htmlFor="education">Education:</label>
             <select id="education" name="education">
               <option value="highSchool">High School</option>
-              <option value="bachelor">Bachelor's Degree</option>
-              <option value="master">Master's Degree</option>
+              <option value="bachelor">Bachelor&apos;s Degree</option>
+              <option value="master">Master&apos;s Degree</option>
               <option value="phd">PhD</option>
             </select>
           </div>
@@ -251,4 +249,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
